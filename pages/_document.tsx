@@ -1,60 +1,30 @@
 import React from "react";
-import Document, { DocumentContext, Head, Html, Main, NextScript } from "next/document";
+import Document, { Head, Html, Main, NextScript } from "next/document";
 
-import { InlineJs } from "@kachkaev/react-inline-js";
-
-const THEME_CHECKER_JS = `
-// Helper
-const isNullified = function(data) {
-    return typeof data === "undefined" || data === null;
-}
-
-// Check for first user preferences.
-let userPreferDark;
-let systemPreferDark = false;
-if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
-    systemPreferDark = true;
-}
-try {
-    const themeStorage = localStorage.getItem("theme");
-    if (!isNullified(themeStorage)) {
-        userPreferDark = themeStorage === "dark" ? true : false;
-    }
-} catch (e) {};
-if (isNullified(userPreferDark)) {
-    if (systemPreferDark) {
-        document.documentElement.classList.add("dark");
-        localStorage.setItem("theme", "dark");
-    } else {
-        localStorage.setItem("theme", "light");
-    }
-} else {
-    if (userPreferDark) {
-        document.documentElement.classList.add("dark");
-    }
-}
-
-// Theme toggler
-const toggleTheme = function() {
-    try {
-        const isDark = document.documentElement.classList.contains("dark");
-        isDark ? document.documentElement.classList.remove("dark") : document.documentElement.classList.add("dark");
-        localStorage.setItem("theme", isDark ? "light" : "dark");
-    } catch (e) {};
-};
-`;
-
-class MyDocument extends Document {
-    static async getInitialProps(ctx: DocumentContext) {
-        const initialProps = await Document.getInitialProps(ctx);
-        return { ...initialProps };
-    }
-
+class HolylandDocument extends Document {
     render() {
         return (
-            <Html>
+            <Html prefix="og: https://ogp.me/ns#" lang="en">
                 <Head>
-                    <InlineJs code={THEME_CHECKER_JS} />
+                    <meta charSet="utf-8" />
+                    <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+                    <link rel="preconnect" href="https://fonts.googleapis.com" />
+                    <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
+                    <link
+                        href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap"
+                        rel="stylesheet"
+                    />
+                    <link
+                        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&display=swap"
+                        rel="stylesheet"
+                    />
+                    <meta property="og:url" content="https://holyland.my.id" />
+                    <meta name="theme-color" content="#0C4B4A" />
+                    <meta name="twitter:card" content="summary_large_image" />
+                    <meta property="og:image" content="/assets/splash.png" />
+                    <link rel="icon" type="image/png" href="/holyland.png" />
+                    <link rel="icon" href="/holyland.png" />
                 </Head>
                 <body>
                     <Main />
@@ -65,4 +35,4 @@ class MyDocument extends Document {
     }
 }
 
-export default MyDocument;
+export default HolylandDocument;
