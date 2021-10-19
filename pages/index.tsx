@@ -1,9 +1,10 @@
 import Head from "next/head";
 import React, { useState } from "react";
 
-import AdminContainer from "@/components/AdminContainer";
-import AdminProfile from "@/components/AdminProfile";
+// import AdminContainer from "@/components/AdminContainer";
+// import AdminProfile from "@/components/AdminProfile";
 import Header from "@/components/Header";
+import PlayerCount from "@/components/PlayeCount";
 
 function ServerButton() {
     const [clicked, setClicked] = useState(false);
@@ -85,6 +86,7 @@ export default function Main() {
                         <ServerButton />
                         <MapButton />
                     </div>
+                    <PlayerCount />
                     <hr className="w-full mt-5 border-gray-600" />
                     {/* <AdminContainer className="mt-6">
                         <AdminProfile
