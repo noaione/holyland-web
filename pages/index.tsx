@@ -5,6 +5,7 @@ import React, { useState } from "react";
 // import AdminProfile from "@/components/AdminProfile";
 import Header from "@/components/Header";
 import PlayerCount from "@/components/PlayeCount";
+import Kabinet from "@/components/Kabinet";
 
 function ServerButton() {
     const [clicked, setClicked] = useState(false);
@@ -91,6 +92,7 @@ function DiscordButton() {
 }
 
 export default function Main() {
+    const currentYear = new Date().getFullYear();
     return (
         <>
             <Head>
@@ -99,23 +101,36 @@ export default function Main() {
             </Head>
             <Header />
             <main className="w-full px-4 md:px-7 lg:px-10 Inter-Font">
-                <div className="flex flex-col items-center">
+                <div className="flex flex-col pb-8 items-center">
                     <div className="text-lg font-bold text-center">Ayo bergabung sekarang!</div>
                     <div className="flex flex-col sm:flex-row sm:gap-2">
                         <ServerButton />
+                    </div>
+                    <div className="flex flex-col sm:flex-row sm:gap-2">
                         <MapButton />
                         <DiscordButton />
                     </div>
                     <PlayerCount />
                     <hr className="w-full mt-5 border-gray-600" />
-                    {/* <AdminContainer className="mt-6">
-                        <AdminProfile
-                            name="N4O"
-                            image="https://cdn.discordapp.com/avatars/466469077444067372/95d2673b3cd4d66e73e2bb05a6f8df31.png?size=1024"
-                        >
-                            Owner
-                        </AdminProfile>
-                    </AdminContainer> */}
+                    <h2 className="my-4 text-xl font-bold">Kabinet</h2>
+                    <Kabinet.Container>
+                        <Kabinet.Card name="Kresendo" role="Presiden" />
+                        <Kabinet.Card name="JackLumber" role="Wakil Presiden" />
+                    </Kabinet.Container>
+                    <Kabinet.Container className="mt-4">
+                        <Kabinet.Card name="kresbayyy" role="Pengawas" />
+                        <Kabinet.Card name="N4O" role="Pengawas" />
+                        <Kabinet.Card name="Vincent" role="Pengawas" />
+                        <Kabinet.Card name="ceng" role="Pengawas" />
+                    </Kabinet.Container>
+                    <Kabinet.Container className="mt-4 mb-4">
+                        <Kabinet.Card name="furashu" role="Menteri" />
+                        <Kabinet.Card name="batrix" role="Menteri" />
+                        <Kabinet.Card name="kiwwwwi" role="Menteri" />
+                        <Kabinet.Card name="jazz_on" role="Menteri" />
+                    </Kabinet.Container>
+                    <hr className="w-full my-5 border-gray-600" />
+                    <footer className="text-gray-400">©️ {currentYear} - Holyland Team</footer>
                 </div>
             </main>
         </>
