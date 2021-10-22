@@ -50,7 +50,7 @@ function ServerButton() {
 
 function MapButton() {
     return (
-        <a href="http://holyland.my.id:8100/" target="_blank" rel="noopener noreferrer">
+        <a href="http://mc.holyland.my.id:8100/" target="_blank" rel="noopener noreferrer">
             <div className="flex flex-row justify-center px-5 py-3 bg-gray-700 hover:bg-gray-600 border-gray-700 hover:border-gray-600 transition mt-4 rounded-lg cursor-pointer border-[3px]">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -97,7 +97,7 @@ export default function Main() {
         <>
             <Head>
                 <title>Holyland</title>
-                <meta name="description" content="" />
+                <meta name="description" content="Selamat datang di Holyland" />
             </Head>
             <Header />
             <main className="w-full px-4 md:px-7 lg:px-10 Inter-Font">
